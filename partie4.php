@@ -1,5 +1,35 @@
-public function __toString(): string {
-    return $this->prenom . " " . $this->nom . " (" . $this->getAge() . " ans)";
+
+
+<?php
+
+class Personne
+{
+    private string $nom;
+    private string $prenom;
+    private int $anneeNaissance;
+
+    public function __construct(string $nom, string $prenom, int $anneeNaissance)
+    {
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->anneeNaissance = $anneeNaissance;
+    }
+
+    private function getAge(): int
+    {
+        return date("Y") - $this->anneeNaissance;
+    }
+
+    public function __toString(): string
+    {
+        return $this->prenom . " " . $this->nom . " (" . $this->getAge() . " ans)";
+    }
 }
-// 4.1 getAge() khdama 7it __toString() dakhl l classe, private kaykhdem dakhl.
-// 4.2 Ila rje3ti int: Fatal error, __toString() khasha trje3 string obligatoirement.
+
+// Création d'un objet
+$p = new Personne("Alami", "Sara", 2005);
+
+// Affichage
+echo $p;
+
+?>
