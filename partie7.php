@@ -12,49 +12,44 @@ class Compte {
 
         $this->montant = $montantInitial;
         $this->interet = $interet;
-
     }
 
     public function un_an(): void {
 
-        $this->montant =
-            $this->montant *
-            (1 + $this->interet / 100);
-
+        $this->montant = $this->montant
+            * (1 + $this->interet / 100);
     }
 
     public function get_montant(): float {
 
         return $this->montant;
-
     }
 
 }
 
 // Création des comptes
-
 $c1 = new Compte(400, 10);
-
 $c2 = new Compte(2500, 5);
 
-// Calcul pendant 10 ans
-
+// Calcul sur 10 ans
 for ($i = 1; $i <= 10; $i++) {
 
     $c1->un_an();
-
     $c2->un_an();
 
 }
 
-// Affichage
+// Affichage des résultats
+echo "<h3>Compte 1</h3>";
 
-echo "Compte 1 = " .
-    number_format($c1->get_montant(), 2, ',', ' ') .
-    " DH" . PHP_EOL;
+echo "Montant après 10 ans : "
+    . number_format($c1->get_montant(), 2, ',', ' ')
+    . " DH<br>";
 
-echo "Compte 2 = " .
-    number_format($c2->get_montant(), 2, ',', ' ') .
-    " DH" . PHP_EOL;
+echo "<h3>Compte 2</h3>";
+
+echo "Montant après 10 ans : "
+    . number_format($c2->get_montant(), 2, ',', ' ')
+    . " DH<br>";
 
 ?>

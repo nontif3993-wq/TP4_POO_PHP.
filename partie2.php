@@ -71,11 +71,23 @@ $b = new Voiture3("Noire");
 
 class Personne {
 
-    public function __construct(public string $nom) {}
+    public function __construct(
+        public string $nom = "",
+        public string $prenom = ""
+    ) {}
 
     public function __destruct() {
         echo "Détruire " . __CLASS__ . PHP_EOL;
     }
-}
 
+    public static function depuisTableau(array $data): Personne {
+        return new Personne(
+            $data['nom'],
+            $data['prenom']
+        );
+    }
+} 
+
+$p1 = new Personne();
+$p2 = new Personne("Hachimi", "Sara");
 $p = new Personne("Sara");
